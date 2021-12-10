@@ -20,6 +20,7 @@ export class CoffeeComponent implements OnInit {
   flavors:string[] = ['None', 'Brown Sugar', 'Caramel', 'Chestnut Praline', 'Hazelnut', 'Irish Cream', 'Peppermint', 'Raspberry', 'Toffee Nut', 'Vanilla']
   toppings:string[] = ['None', 'Barista Cocoa Powder', 'Caramel Brulee', 'Chestnut Praline', 'Chocolate Curls', 'Cinnamon Dolce', 'Holiday Sugar', 'Pumpkin Spice', 'Red and Green Sprinkle', 'Caramel Drizzle', 'Mocha Drizzle', 'Spiced Apple Drizzle', 'Cinnamon Powder', 'Whipped Cream']
   highScore:number = 0;
+  newHighScore:boolean = false;
   roundCounter:number = 0;
   rounds:number = 5;
 
@@ -27,6 +28,7 @@ export class CoffeeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getHighScore()
   }
 
   getRandomCoffee() {
@@ -85,14 +87,22 @@ export class CoffeeComponent implements OnInit {
     if (this.roundCounter < this.rounds) {
       this.getRandomCoffee();
       this.showOrder();
-    } else {
-      this.showHighScore()
+    } else if (this.roundCounter === this.rounds && this.points > this.highScore) {
+        this.newHighScore === true;
+        localStorage.setItem("coffeePoints", JSON.stringify(this.points))
     }
   }
 
-  showHighScore() {
-    
+  getHighScore() {
+    let data:string | null
+    if (localStorage.getItem("coffeePoints") != null) {
+      data = JSON.parse(localStorage.getItem('coffeePoints') as string)
+      this.highScore = Number(data)
+    } else {
+      this.highScore = 0
+    }
   }
+  
 
   hideOrder(){
     if (this.orderVisible)
@@ -104,10 +114,10 @@ export class CoffeeComponent implements OnInit {
   }
 
   showOrder(){
-    if (this.roundCounter < this.rounds) {
+    if (this.roundCounter <= this.rounds) {
       this.orderVisible = true;
       this.hideOrder();
-    }
+    } 
   }
 
   onClear() {
@@ -115,5 +125,6 @@ export class CoffeeComponent implements OnInit {
     this.points = 0;
     this.getRandomCoffee();
     this.showOrder()
+    this.newHighScore === false;
   }
 }

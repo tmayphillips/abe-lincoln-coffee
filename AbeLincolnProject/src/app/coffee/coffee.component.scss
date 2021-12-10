@@ -1,5 +1,14 @@
 .container{
-    width: 50%
+    width: 50%;
+    border: black solid 2px;
+    margin-bottom: auto;   
+   
+}
+
+.form-label{
+    text-align: center;
+    margin-top: 20px;
+    font-family: Arial;
 }
 
 .btn-container {
@@ -15,4 +24,12 @@
     align-items: center;
     margin: 0 auto;
     text-align: center;
+
+.milk, .flavor-container, .topping-container{
+    text-decoration: underline;
+    
+}
+.btn-primary{
+    margin-top: 20px; 
+    // width:20%
 }
