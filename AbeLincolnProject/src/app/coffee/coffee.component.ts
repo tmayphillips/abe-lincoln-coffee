@@ -14,13 +14,14 @@ export class CoffeeComponent implements OnInit {
   names:string[] = ['Chase','Gus', 'Jacob', 'Josh', 'Nathan', 'Neely', 'Pato', 'Terra', 'Tiffany', 'Xavi'];
   sizes:string[] = ['Tall', 'Grande', 'Venti']
   shotCounts:number[] = [0, 1, 2, 3, 4];
-  sweeteners:string[] = ['Sugar', 'Sugar in the Raw', 'Honey', 'Splenda', 'Stevia', 'Syrup', 'Cane Sugar'];
-  milkTypes:string[] = ['2% Milk', 'Soy Milk', 'Almond Milk', 'Cocunut Milk', 'Oatmilk', 'Sweet Cream', 'Nonfat Milk', 'Whole Milk', 'Cream', 'Heavy Cream'] ;
-  flavors:string[] = ['Apple Brown Sugar Syrup', 'Brown Sugar Syrup', 'Caramel Syrup', 'Chestnut Praline Syrup']
-  toppings:string[] = ['Barista Cocoa Powder', 'Caramel Brulee', 'Chestnut Praline', 'Chocolate Curls']
+  sweeteners:string[] = ['None', 'Sugar', 'Sugar in the Raw', 'Honey', 'Splenda', 'Stevia', 'Syrup', 'Cane Sugar'];
+  milkTypes:string[] = ['None', '2% Milk', 'Soy Milk', 'Almond Milk', 'Cocunut Milk', 'Oatmilk', 'Sweet Cream', 'Nonfat Milk', 'Whole Milk', 'Cream', 'Heavy Cream'] ;
+  flavors:string[] = ['None', 'Brown Sugar', 'Caramel', 'Chestnut Praline', 'Hazelnut', 'Irish Cream', 'Peppermint', 'Raspberry', 'Toffee Nut', 'Vanilla']
+  toppings:string[] = ['None', 'Barista Cocoa Powder', 'Caramel Brulee', 'Chestnut Praline', 'Chocolate Curls', 'Cinnamon Dolce', 'Holiday Sugar', 'Pumpkin Spice', 'Red and Green Sprinkle', 'Caramel Drizzle', 'Mocha Drizzle', 'Spiced Apple Drizzle', 'Cinnamon Powder', 'Whipped Cream']
 
   order:Order = new Order('','',0,'','','','')
   constructor() { }
+
   ngOnInit(): void {
     this.getRandomCoffee() 
   }
