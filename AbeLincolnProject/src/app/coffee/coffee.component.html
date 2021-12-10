@@ -1,4 +1,4 @@
-<div class="customer-order" *ngIf="orderVisible">
+<div class="customer-order" *ngIf="orderVisible && roundCounter > 0">
     <h1>Hi! My name is {{customerOrder.name}}. I'd like:</h1>
     <p>
         A {{customerOrder.sizes}} coffee with {{customerOrder.shotCount}} shot<span *ngIf="customerOrder.shotCount != 1">s</span> of espresso. <br>
@@ -9,12 +9,13 @@
         That's it!
     </p>
 </div>
-<button (click)="getRandomCoffee(); showOrder();">Get New Order</button>
+<button *ngIf='roundCounter === 0' (click)="getRandomCoffee(); showOrder();">Start Game</button>
 
         <h1 class="text-center"> Coffee Order</h1>
+        <h3 class="text-center">Round: {{roundCounter}}</h3>
         <div class="container">
             <!-- reminder need onSubmit value  -->
-            <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)">
+            <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid); coffeeForm.reset(); createdOrder.milkType= ''; createdOrder.flavor=''; createdOrder.topping='' ">
                 <!-- Name form  -->
                 <label for="name" class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="createdOrder.name" require>
@@ -41,7 +42,7 @@
                 <div class="milk" style='text-align: center; padding-top: 20px;'> Milk Options
                     <div class="options">
                         <label *ngFor="let milk of milkTypes" style="padding-right: 20px;">
-                            <input type="radio" name="milk" (click)="createdOrder.milkType = milk"
+                            <input type="radio" name="milk" [value]='milkTypes[0]' (click)="createdOrder.milkType = milk"
                                 [checked]="milk === createdOrder.milkType">
                             {{milk}}
                         </label>
@@ -69,8 +70,11 @@
                     </div>
                 </div>
                 <!-- Submit Button -->
-                <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit form</button>
+                <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit Order</button>
             </form>
+            <div class='btn-container'>
+                <button (click)='onClear()'>Start Over</button>
+            </div>
         </div>
 
         <!-- <button (click)="compareOrders()">Click me!</button> -->
