@@ -13,6 +13,8 @@
 
         <h1 class="text-center"> Coffee Order</h1>
         <h3 class="text-center">Round: {{roundCounter}}</h3>
+        <h4 class="text-center" *ngIf='highScore > 0'>High Score: {{highScore}}</h4>
+        <h4 class="text-center" *ngIf='newHighScore === true'>Congrats! New High Score!</h4>
         <div class="container">
             <!-- reminder need onSubmit value  -->
             <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid); coffeeForm.reset(); createdOrder.milkType= ''; createdOrder.flavor=''; createdOrder.topping='' ">
