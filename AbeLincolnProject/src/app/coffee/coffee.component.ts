@@ -68,7 +68,7 @@ export class CoffeeComponent implements OnInit {
     }
   }
 
-  onSunmit(isValid:boolean|null){
+  onSubmit(isValid:boolean|null){
     console.log('Thanks!')
   }
 
