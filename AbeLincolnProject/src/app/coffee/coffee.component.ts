@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Order } from './Order';
 
@@ -21,13 +20,13 @@ export class CoffeeComponent implements OnInit {
   flavors:string[] = ['None', 'Brown Sugar', 'Caramel', 'Chestnut Praline', 'Hazelnut', 'Irish Cream', 'Peppermint', 'Raspberry', 'Toffee Nut', 'Vanilla']
   toppings:string[] = ['None', 'Barista Cocoa Powder', 'Caramel Brulee', 'Chestnut Praline', 'Chocolate Curls', 'Cinnamon Dolce', 'Holiday Sugar', 'Pumpkin Spice', 'Red and Green Sprinkle', 'Caramel Drizzle', 'Mocha Drizzle', 'Spiced Apple Drizzle', 'Cinnamon Powder', 'Whipped Cream']
   highScore:number = 0;
+  roundCounter:number = 0;
+  rounds:number = 5;
 
   order:Order = new Order('','',0,'','','','')
   constructor() { }
 
   ngOnInit(): void {
-    this.getRandomCoffee() 
-    this.hideOrder();
   }
 
   getRandomCoffee() {
@@ -39,6 +38,7 @@ export class CoffeeComponent implements OnInit {
     this.customerOrder.flavor = this.flavors[this.getRandomInt(this.flavors.length)]
     this.customerOrder.topping = this.toppings[this.getRandomInt(this.toppings.length)]
     console.log(this.customerOrder)
+    this.roundCounter++
   }
 
   getRandomInt(max:number):number {
@@ -46,6 +46,8 @@ export class CoffeeComponent implements OnInit {
   }
 
   compareOrders(){
+    console.log(this.createdOrder)
+    console.log(this.customerOrder)
     if(JSON.stringify(this.createdOrder) === JSON.stringify(this.customerOrder))
       this.points +=  7;
     else{
@@ -55,7 +57,7 @@ export class CoffeeComponent implements OnInit {
       //The count of 'true' variables (matches) will be added up, divided by 2 and rounded down (with Math.floor)
       //That will determine the number of points that is added to the point total
       let matchCount = 0;
-      let nameComp:boolean = this.customerOrder.name === this.createdOrder.name;
+      let nameComp:boolean = this.customerOrder.name.toLowerCase() === this.createdOrder.name.toLowerCase();
       let sizeComp:boolean = this.customerOrder.sizes === this.createdOrder.sizes;
       let shotComp:boolean = this.customerOrder.shotCount === this.createdOrder.shotCount;
       let sugarComp:boolean = this.customerOrder.sweetener === this.createdOrder.sweetener;
@@ -77,8 +79,19 @@ export class CoffeeComponent implements OnInit {
   }
 
   onSubmit(isValid:boolean|null){
-    // console.log(this.createdOrder)
+    console.log(this.createdOrder)
     this.compareOrders();
+
+    if (this.roundCounter < this.rounds) {
+      this.getRandomCoffee();
+      this.showOrder();
+    } else {
+      this.showHighScore()
+    }
+  }
+
+  showHighScore() {
+    
   }
 
   hideOrder(){
@@ -91,11 +104,16 @@ export class CoffeeComponent implements OnInit {
   }
 
   showOrder(){
-    this.orderVisible = true;
-    this.hideOrder();
+    if (this.roundCounter < this.rounds) {
+      this.orderVisible = true;
+      this.hideOrder();
+    }
   }
 
   onClear() {
-    this.order = new Order('','',0,'','','','')
+    this.roundCounter = 0;
+    this.points = 0;
+    this.getRandomCoffee();
+    this.showOrder()
   }
 }
