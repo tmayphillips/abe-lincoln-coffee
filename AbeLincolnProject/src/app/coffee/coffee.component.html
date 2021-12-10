@@ -18,7 +18,7 @@
     <button *ngIf='roundCounter === 0' (click)="getRandomCoffee(); showOrder();" class="btn btn-secondary">Start Game</button>
 </div>
 
-        <h1 class="text-center"> Coffee Order</h1>
+        <h1 class="text-center coffee-title">ABE LINCOLN COFFEE</h1>
         <h3 class="text-center">Round: {{roundCounter}}</h3>
         <h4 class="text-center" *ngIf='highScore > 0'>High Score: {{highScore}}</h4>
         <h4 class="text-center" *ngIf='newHighScore === true'>Congrats! New High Score!</h4>
@@ -86,33 +86,5 @@
             </div>
         </div>
 
-        <!-- Flavor Form  -->
-        <div class="flavor-container" style='text-align: center; padding-top: 20px;'>Flavors option
-            <div class="option">
-                <label *ngFor="let flav of flavors" style="padding-right: 20px;">
-                    <input type="radio" name="flavors" (click)="createdOrder.flavor = flav"
-                        [checked]="flav === createdOrder.flavor">
-                    {{flav}}
-                </label>
-            </div>
-        </div>
-        <!-- Toppings -->
-        <div class="topping-container" style='text-align: center; padding-top: 20px;'> Topping option
-            <div class="options">
-                <label *ngFor="let top of toppings" style="padding-right: 20px;">
-                    <input type="radio" name="toppings" (click)="createdOrder.topping = top"
-                        [checked]="top === createdOrder.topping">
-                    {{top}}
-                </label>
-            </div>
-        </div>
-        <!-- Submit Button -->
-        <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit Order</button>
-    </form>
-    <div class='btn-container'>
-        <button (click)='onClear()'>Start Over</button>
-    </div>
-</div>
-
 <!-- <button (click)="compareOrders()">Click me!</button> -->
-<div>Points: {{points}}</div>
+<div class="points justify-content-center align-items-center">Points: {{points}}</div>
