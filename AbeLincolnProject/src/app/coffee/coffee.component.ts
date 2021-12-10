@@ -22,6 +22,7 @@ export class CoffeeComponent implements OnInit {
   order:Order = new Order('','',0,'','','','')
   constructor() { }
 
+  constructor() { }
   ngOnInit(): void {
     this.getRandomCoffee() 
   }
@@ -66,6 +67,10 @@ export class CoffeeComponent implements OnInit {
 
       this.points += matchCount;
     }
+  }
+
+  onSunmit(isValid:boolean|null){
+    console.log('Thanks!')
   }
 
 }

@@ -1,2 +1,20 @@
+<h1 class="container">  Coffee Order</h1>
+        <!-- reminder need onSubmit value  -->
+        <form class="row" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)"> 
+
+            <!-- Name form  -->
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="coffeeForm.name" require>
+            <!-- Size form --> 
+            <label for="size" class="form-label">Size</label>
+            <select class="form-select" name="size" id="size" [(ngModel)]="coffeeForm.size"  required>
+            <option *ngFor="let oz of size" value="oz">{{oz}}</option>
+            </select>
+            
+
+            <!-- Submit Button -->
+        </form>
+   <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit form</button>
+
 <button (click)="compareOrders()">Click me!</button>
 <div>Points: {{points}}</div>
