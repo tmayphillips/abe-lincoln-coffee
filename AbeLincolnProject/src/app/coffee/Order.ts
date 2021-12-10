@@ -2,10 +2,10 @@ export class Order{
     constructor(
         public name:string,
         public size:string,
-        public espressoShots:number,
-        public sugars:string,
-        public dairy:string,
+        public shotCount:number,
+        public sweetener:string,
+        public milkType:string,
         public flavor:string,
-        public toppings:string
+        public topping:string
     ) {}
 }
