@@ -99,7 +99,7 @@ export class CoffeeComponent implements OnInit {
     {
       setTimeout(() =>{
         this.orderVisible = !this.orderVisible;
-      }, 6000)
+      }, 8000)
     }
   }
 
