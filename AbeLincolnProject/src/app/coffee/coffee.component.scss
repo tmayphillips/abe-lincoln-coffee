@@ -24,6 +24,7 @@
     align-items: center;
     margin: 0 auto;
     text-align: center;
+}
 
 .milk, .flavor-container, .topping-container{
     text-decoration: underline;
@@ -32,4 +33,14 @@
 .btn-primary{
     margin-top: 20px; 
     // width:20%
+}
+
+.points{
+    font-size: xx-large;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.coffee-title{
+    letter-spacing: 2px;
 }
