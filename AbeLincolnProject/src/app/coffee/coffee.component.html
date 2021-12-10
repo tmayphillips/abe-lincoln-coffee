@@ -1,15 +1,3 @@
-<h1 class="text-center"> Coffee Order</h1>
-<div class="container">
-    <!-- reminder need onSubmit value  -->
-    <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)">
-
-        <!-- Name form  -->
-        <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="order.name" require>
-
-        <!-- Size form -->
-        <label for="sizes" class="form-label">Size</label>
-        <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes" required>
 <div class="customer-order" *ngIf="orderVisible">
     <h1>Hi! My name is {{customerOrder.name}}. I'd like:</h1>
     <p>
