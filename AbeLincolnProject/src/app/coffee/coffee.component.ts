@@ -10,7 +10,7 @@ export class CoffeeComponent implements OnInit {
   points:number = 0;
   customerOrder:Order = new Order('Xavo', 'med', 3, 'sugar', 'milk', '', 'caramel');
   createdOrder:Order = new Order('Xavi', 'med', 2, 'sugar', 'soy milk', '', 'caramel');
-
+  customer:Order[]=[];
   names:string[] = ['Chase','Gus', 'Jacob', 'Josh', 'Nathan', 'Neely', 'Pato', 'Terra', 'Tiffany', 'Xavi'];
   sizes:string[] = ['Tall', 'Grande', 'Venti']
   shotCounts:number[] = [0, 1, 2, 3, 4];
@@ -28,7 +28,7 @@ export class CoffeeComponent implements OnInit {
 
   getRandomCoffee() {
     this.order.name = this.names[this.getRandomInt(this.names.length)]
-    this.order.size = this.sizes[this.getRandomInt(this.sizes.length)]
+    this.order.sizes = this.sizes[this.getRandomInt(this.sizes.length)]
     this.order.shotCount = this.shotCounts[this.getRandomInt(this.shotCounts.length)]
     this.order.sweetener = this.sweeteners[this.getRandomInt(this.sweeteners.length)]
     this.order.milkType = this.milkTypes[this.getRandomInt(this.milkTypes.length)]
@@ -50,7 +50,7 @@ export class CoffeeComponent implements OnInit {
       //That will determine the number of points that is added to the point total
       let matchCount = 0;
       let nameComp:boolean = this.customerOrder.name === this.createdOrder.name;
-      let sizeComp:boolean = this.customerOrder.size === this.createdOrder.size;
+      let sizeComp:boolean = this.customerOrder.sizes === this.createdOrder.sizes;
       let shotComp:boolean = this.customerOrder.shotCount === this.createdOrder.shotCount;
       let sugarComp:boolean = this.customerOrder.sweetener === this.createdOrder.sweetener;
       let dairyComp:boolean = this.customerOrder.milkType === this.createdOrder.milkType;
