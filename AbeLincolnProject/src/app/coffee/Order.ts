@@ -3,8 +3,9 @@ export class Order{
         public name:string,
         public size:string,
         public espressoShots:number,
-        public sugars:number,
+        public sugars:string,
         public dairy:string,
-        public flavor:string
+        public flavor:string,
+        public toppings:string
     ) {}
 }
