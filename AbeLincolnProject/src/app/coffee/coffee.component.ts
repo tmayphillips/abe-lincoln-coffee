@@ -76,6 +76,9 @@ export class CoffeeComponent implements OnInit {
 
       this.points += matchCount;
       console.log(`points: ${this.points}`)
+      if (this.points > this.highScore) {
+        this.highScore = this.points
+      }
     }
     
   }
