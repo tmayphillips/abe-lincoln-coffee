@@ -17,10 +17,10 @@
         <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)"> 
             <!-- Name form  -->
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="order.name" require>
+            <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="createdOrder.name" require>
             <!-- Size form --> 
             <label for="sizes" class="form-label">Size</label>
-            <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes"required>
+            <select class="form-select" name="size" id="size" [(ngModel)]="createdOrder.sizes"required>
             <option *ngFor="let oz of sizes" value="oz">{{oz}}</option>
         </select>
 
@@ -33,13 +33,13 @@
 
         <!-- Shot form -->
         <label for="shotCount" class="form-label">How Many Shots</label>
-        <select class="form-select" name="shotCount" id="shotCount" [(ngModel)]="order.shotCount" >
+        <select class="form-select" name="shotCount" id="shotCount" [(ngModel)]="createdOrder.shotCount" >
             <option *ngFor="let shot of shotCounts" value="">{{shot}}</option>
         </select>
 
         <!-- Sweetners form -->
         <label for="sweeteners" class="form-label">Any Sweetners ?</label>
-        <select class="form-select" name="sweeteners" id="sweeteners" [(ngModel)]="order.sweetener" >
+        <select class="form-select" name="sweeteners" id="sweeteners" [(ngModel)]="createdOrder.sweetener" >
             <option *ngFor="let sweet of sweeteners" value="">{{sweet}}</option>
         </select>
 
@@ -51,7 +51,7 @@
         <div class="milk" style='text-align: center; padding-top: 20px;' > Milk Options
             <div class="options">
                 <label *ngFor="let milk of milkTypes" style= "padding-right: 20px;">
-                    <input type="radio" name="milk" (click)="order.milkType = milk" [checked]="milk === order.milkType">
+                    <input type="radio" name="milk" (click)="createdOrder.milkType = milk" [checked]="milk === order.milkType">
                     {{milk}}
                 </label>
             </div>
@@ -61,7 +61,7 @@
         <div class="flavor-container" style='text-align: center; padding-top: 20px;'>Flavors option
             <div class="option">
                 <label *ngFor="let flav of flavors" style= "padding-right: 20px;">
-                    <input type="radio" name="flavors" (click)="order.flavor = flav" [checked]="flav === order.flavor">
+                    <input type="radio" name="flavors" (click)="createdOrder.flavor = flav" [checked]="flav === order.flavor">
                     {{flav}}
                 </label>
             </div>
@@ -70,7 +70,7 @@
         <div class="topping-container" style='text-align: center; padding-top: 20px;'> Topping option
             <div class="options">
                 <label  *ngFor="let top of toppings" style= "padding-right: 20px;" >
-                    <input type="radio" name="toppings" (click)="order.topping = top" [checked]="top === order.topping" >
+                    <input type="radio" name="toppings" (click)="createdOrder.topping = top" [checked]="top === order.topping" >
                          {{top}}
                 </label>
             </div>
