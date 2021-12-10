@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Order } from './Order';
 
@@ -7,9 +8,10 @@ import { Order } from './Order';
   styleUrls: ['./coffee.component.scss']
 })
 export class CoffeeComponent implements OnInit {
+  orderVisible:boolean = true;
   points:number = 0;
-  customerOrder:Order = new Order('Xavo', 'med', 3, 'sugar', 'milk', '', 'caramel');
-  createdOrder:Order = new Order('Xavi', 'med', 2, 'sugar', 'soy milk', '', 'caramel');
+  customerOrder:Order = new Order('Xavo', 'med', 3, 'sugar', 'milk', 'None', 'caramel');
+  createdOrder:Order = new Order('Xavi', 'med', 2, 'sugar', 'soy milk', 'None', 'caramel');
   customer:Order[]=[];
   names:string[] = ['Chase','Gus', 'Jacob', 'Josh', 'Nathan', 'Neely', 'Pato', 'Terra', 'Tiffany', 'Xavi'];
   sizes:string[] = ['Tall', 'Grande', 'Venti']
@@ -24,15 +26,18 @@ export class CoffeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRandomCoffee() 
+    this.hideOrder();
   }
 
   getRandomCoffee() {
-    this.order.name = this.names[this.getRandomInt(this.names.length)]
-    this.order.sizes = this.sizes[this.getRandomInt(this.sizes.length)]
-    this.order.shotCount = this.shotCounts[this.getRandomInt(this.shotCounts.length)]
-    this.order.sweetener = this.sweeteners[this.getRandomInt(this.sweeteners.length)]
-    this.order.milkType = this.milkTypes[this.getRandomInt(this.milkTypes.length)]
-    console.log(this.order)
+    this.customerOrder.name = this.names[this.getRandomInt(this.names.length)]
+    this.customerOrder.sizes = this.sizes[this.getRandomInt(this.sizes.length)]
+    this.customerOrder.shotCount = this.shotCounts[this.getRandomInt(this.shotCounts.length)]
+    this.customerOrder.sweetener = this.sweeteners[this.getRandomInt(this.sweeteners.length)]
+    this.customerOrder.milkType = this.milkTypes[this.getRandomInt(this.milkTypes.length)]
+    this.customerOrder.flavor = this.flavors[this.getRandomInt(this.flavors.length)]
+    this.customerOrder.topping = this.toppings[this.getRandomInt(this.toppings.length)]
+    console.log(this.customerOrder)
   }
 
   getRandomInt(max:number):number {
@@ -72,4 +77,17 @@ export class CoffeeComponent implements OnInit {
     console.log('Thanks!')
   }
 
+  hideOrder(){
+    if (this.orderVisible)
+    {
+      setTimeout(() =>{
+        this.orderVisible = !this.orderVisible;
+      }, 6000)
+    }
+  }
+
+  showOrder(){
+    this.orderVisible = true;
+    this.hideOrder();
+  }
 }
