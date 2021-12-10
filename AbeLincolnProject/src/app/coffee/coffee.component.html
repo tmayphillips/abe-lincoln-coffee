@@ -1,25 +1,15 @@
-<h1 class="text-center"> Coffee Order</h1>
-<div class="container">
-    <!-- reminder need onSubmit value  -->
-    <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)">
-
-        <div class="customer-order" *ngIf="orderVisible">
-            <h1>Hi! My name is {{customerOrder.name}}. I'd like:</h1>
-            <p>
-                A {{customerOrder.sizes}} coffee with {{customerOrder.shotCount}} shot<span
-                    *ngIf="customerOrder.shotCount != 1">s</span> of espresso. <br>
-                I also want <span *ngIf="customerOrder.sweetener != 'None'">{{customerOrder.sweetener}} as my
-                    sweetener</span>
-                <span *ngIf="customerOrder.milkType != 'None'"><span *ngIf="customerOrder.sweetener != 'None'">,
-                    </span>{{customerOrder.milkType}} </span>
-                <span *ngIf="customerOrder.flavor != 'None'"><span
-                        *ngIf="customerOrder.sweetener != 'None' || customerOrder.milkType != 'None'">and </span>a pump
-                    of {{customerOrder.flavor}}</span>...<br>
-                <span *ngIf="customerOrder.topping != 'None'">Give me {{customerOrder.topping}} on top!</span><br>
-                That's it!
-            </p>
-        </div>
-        <button (click)="getRandomCoffee(); showOrder();">Get New Order</button>
+<div class="customer-order" *ngIf="orderVisible">
+    <h1>Hi! My name is {{customerOrder.name}}. I'd like:</h1>
+    <p>
+        A {{customerOrder.sizes}} coffee with {{customerOrder.shotCount}} shot<span *ngIf="customerOrder.shotCount != 1">s</span> of espresso. <br>
+        I also want <span *ngIf="customerOrder.sweetener != 'None'">{{customerOrder.sweetener}} as my sweetener</span>
+        <span *ngIf="customerOrder.milkType != 'None'"><span *ngIf="customerOrder.sweetener != 'None'">, </span>{{customerOrder.milkType}} </span>
+        <span *ngIf="customerOrder.flavor != 'None'"><span *ngIf="customerOrder.sweetener != 'None' || customerOrder.milkType != 'None'">and </span>a pump of {{customerOrder.flavor}}</span>...<br>
+        <span *ngIf="customerOrder.topping != 'None'">Give me {{customerOrder.topping}} on top!</span><br>
+        That's it!
+    </p>
+</div>
+<button (click)="getRandomCoffee(); showOrder();">Get New Order</button>
 
         <h1 class="text-center"> Coffee Order</h1>
         <div class="container">
@@ -34,7 +24,6 @@
                 <select class="form-select" name="size" id="size" [(ngModel)]="createdOrder.sizes" required>
                     <option *ngFor="let oz of sizes" value="{{oz}}">{{oz}}</option>
                 </select>
-
 
                 <!-- Shot form -->
                 <label for="shotCount" class="form-label">How Many Shots</label>
@@ -81,11 +70,8 @@
                 </div>
                 <!-- Submit Button -->
                 <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit form</button>
-
-
             </form>
         </div>
-
 
         <!-- <button (click)="compareOrders()">Click me!</button> -->
         <div>Points: {{points}}</div>
