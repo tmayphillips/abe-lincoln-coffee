@@ -1,47 +1,77 @@
-<h1 class="text-center">  Coffee Order</h1>
-    <div class="container">
-        <!-- reminder need onSubmit value  -->
-        <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)"> 
-            <!-- Name form  -->
-            <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="order.name" require>
-            <!-- Size form --> 
-            <label for="sizes" class="form-label">Size</label>
-            <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes"required>
+<h1 class="text-center"> Coffee Order</h1>
+<div class="container">
+    <!-- reminder need onSubmit value  -->
+    <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)">
+
+        <!-- Name form  -->
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="order.name" require>
+
+        <!-- Size form -->
+        <label for="sizes" class="form-label">Size</label>
+        <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes" required>
             <option *ngFor="let oz of sizes" value="oz">{{oz}}</option>
-            </select>
-            <!-- Shot form --> 
-            <label for="shotCount" class="form-label">How Many Shots</label>
-            <select class="form-select" name="shotCount" id="shotCount" [(ngModel)]="order.shotCount"required>
+        </select>
+
+        <!-- size slider  -->
+
+        <!-- <div class="slider_container">
+            <div class="slider_labelText userselect">Size slider</div>
+            <ejs-slider id='slider' [value]='value' [min]='min' [max]='max' [type]='type' [ticks]='slider_ticks' (renderedTicks)='renderedTicks($event)'></ejs-slider>
+        </div> -->
+
+        <!-- Shot form -->
+        <label for="shotCount" class="form-label">How Many Shots</label>
+        <select class="form-select" name="shotCount" id="shotCount" [(ngModel)]="order.shotCount" >
             <option *ngFor="let shot of shotCounts" value="">{{shot}}</option>
-            </select>
-            <!-- Sweetners form -->
-            <label for="sweeteners" class="form-label">Any Sweetners ?</label>
-            <select class="form-select" name="sweeteners" id="sweeteners" [(ngModel)]="order.sweetener"required>
+        </select>
+
+        <!-- Sweetners form -->
+        <label for="sweeteners" class="form-label">Any Sweetners ?</label>
+        <select class="form-select" name="sweeteners" id="sweeteners" [(ngModel)]="order.sweetener" >
             <option *ngFor="let sweet of sweeteners" value="">{{sweet}}</option>
-            </select>
-            <!-- Milk Form -->
-            <label for="milkTypes" class="form-label">Milk Options</label>
+        </select>
+
+        <!-- Milk Form -->
+        <!-- <label for="milkTypes" class="form-label">Milk Options</label>
             <select class="form-select" name="milkTypes" id="milkTypes" [(ngModel)]="order.milkType"required>
             <option *ngFor="let milk of milkTypes" value="">{{milk}}</option>
-            </select>
-            <!-- Flavor Form  -->
-            <label for="flavors" class="form-label">Add Flavor</label>
-            <select class="form-select" name="flavors" id="flavors" [(ngModel)]="order.flavor"required>
-            <option *ngFor="let flav of flavors" value="">{{flav}}</option>
-            </select>
-            <!-- Toppings -->
-            <label for="toppings" class="form-label">Add Flavor</label>
-            <select class="form-select" name="toppings" id="toppings" [(ngModel)]="order.topping"required>
-            <option *ngFor="let top of toppings" value="">{{top}}</option>
-            </select>
-          
+            </select> -->
+        <div class="milk" style='text-align: center; padding-top: 20px;' > Milk Options
+            <div class="options">
+                <label *ngFor="let milk of milkTypes" style= "padding-right: 20px;">
+                    <input type="radio" name="milk" (click)="order.milkType = milk" [checked]="milk === order.milkType">
+                    {{milk}}
+                </label>
+            </div>
+        </div>
 
-            <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit form</button>
-            <!-- Submit Button -->
-        </form>
-    </div>
- 
+        <!-- Flavor Form  -->
+        <div class="flavor-container" style='text-align: center; padding-top: 20px;'>Flavors option
+            <div class="option">
+                <label *ngFor="let flav of flavors" style= "padding-right: 20px;">
+                    <input type="radio" name="flavors" (click)="order.flavor = flav" [checked]="flav === order.flavor">
+                    {{flav}}
+                </label>
+            </div>
+        </div>
+        <!-- Toppings -->
+        <div class="topping-container" style='text-align: center; padding-top: 20px;'> Topping option
+            <div class="options">
+                <label  *ngFor="let top of toppings" style= "padding-right: 20px;" >
+                    <input type="radio" name="toppings" (click)="order.topping = top" [checked]="top === order.topping" >
+                         {{top}}
+                </label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit form</button>
+
+
+    </form>
+</div>
+
 
 <!-- <button (click)="compareOrders()">Click me!</button> -->
 <!-- <div>Points: {{points}}</div> -->

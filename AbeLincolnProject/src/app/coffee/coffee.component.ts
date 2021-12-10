@@ -65,10 +65,11 @@ export class CoffeeComponent implements OnInit {
 
       this.points += matchCount;
     }
+    
   }
 
-  onSubmit(isValid:boolean|null){
-    console.log('Thanks!')
+  onSubmit(){
+    console.log('Here')
   }
 
 }
