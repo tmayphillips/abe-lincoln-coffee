@@ -76,8 +76,9 @@ export class CoffeeComponent implements OnInit {
     
   }
 
-  onSubmit(isValid:boolean | null){
-    console.log(this.createdOrder)
+  onSubmit(isValid:boolean|null){
+    // console.log(this.createdOrder)
+    this.compareOrders();
   }
 
   hideOrder(){
