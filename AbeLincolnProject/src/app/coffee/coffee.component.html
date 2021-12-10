@@ -10,6 +10,29 @@
         <!-- Size form -->
         <label for="sizes" class="form-label">Size</label>
         <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes" required>
+<div class="customer-order" *ngIf="orderVisible">
+    <h1>Hi! My name is {{customerOrder.name}}. I'd like:</h1>
+    <p>
+        A {{customerOrder.sizes}} coffee with {{customerOrder.shotCount}} shot<span *ngIf="customerOrder.shotCount != 1">s</span> of espresso. <br>
+        I also want <span *ngIf="customerOrder.sweetener != 'None'">{{customerOrder.sweetener}} as my sweetener</span>
+        <span *ngIf="customerOrder.milkType != 'None'"><span *ngIf="customerOrder.sweetener != 'None'">, </span>{{customerOrder.milkType}} </span>
+        <span *ngIf="customerOrder.flavor != 'None'"><span *ngIf="customerOrder.sweetener != 'None' || customerOrder.milkType != 'None'">and </span>a pump of {{customerOrder.flavor}}</span>...<br>
+        <span *ngIf="customerOrder.topping != 'None'">Give me {{customerOrder.topping}} on top!</span><br>
+        That's it!
+    </p>
+</div>
+<button (click)="getRandomCoffee(); showOrder();">Get New Order</button>
+
+<h1 class="text-center">  Coffee Order</h1>
+    <div class="container">
+        <!-- reminder need onSubmit value  -->
+        <form class="row coffeeForm" #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm.valid)"> 
+            <!-- Name form  -->
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" value="" [(ngModel)]="order.name" require>
+            <!-- Size form --> 
+            <label for="sizes" class="form-label">Size</label>
+            <select class="form-select" name="size" id="size" [(ngModel)]="order.sizes"required>
             <option *ngFor="let oz of sizes" value="oz">{{oz}}</option>
         </select>
 
