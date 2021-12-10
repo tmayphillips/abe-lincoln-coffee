@@ -72,21 +72,11 @@ export class CoffeeComponent implements OnInit {
 
       this.points += matchCount;
     }
-  }
-
-  getHighScore() {
-    let data:string | null
-    if (localStorage.getItem("coffeePoints") != null) {
-      data = JSON.parse(localStorage.getItem('coffeePoints') as string)
-      return data
-    } else {
-      return 'No high score yet.'
-    }
     
   }
 
-  onSubmit(isValid:boolean|null){
-    console.log('Thanks!')
+  onSubmit(){
+    console.log('Here')
   }
 
   hideOrder(){
