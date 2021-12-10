@@ -14,6 +14,17 @@
 .btn-container {
     text-align: center;
 }
+
+.customer-order{
+    height: 400px;
+    width: 500px;
+    background-color: rgba(111, 58, 75, 0.8);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+
 .milk, .flavor-container, .topping-container{
     text-decoration: underline;
     
@@ -21,5 +32,4 @@
 .btn-primary{
     margin-top: 20px; 
     // width:20%
-
 }
