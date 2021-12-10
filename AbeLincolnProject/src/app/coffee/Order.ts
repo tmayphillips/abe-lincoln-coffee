@@ -1,7 +1,7 @@
 export class Order{
     constructor(
         public name:string,
-        public size:string,
+        public sizes:string,
         public shotCount:number,
         public sweetener:string,
         public milkType:string,
