@@ -31,17 +31,17 @@
                 <!-- Shot form -->
                 <label for="shotCount" class="form-label">How Many Shots</label>
                 <select class="form-select" name="shotCount" id="shotCount" [(ngModel)]="createdOrder.shotCount">
-                    <option *ngFor="let shot of shotCounts" value= {{shot}}>{{shot}}</option>
+                    <option *ngFor="let shot of shotCounts" value= {{shot}} style= 'text-align: center;'>{{shot}}</option>
                 </select>
 
                 <!-- Sweetners form -->
                 <label for="sweeteners" class="form-label">Any Sweetners ?</label>
                 <select class="form-select" name="sweeteners" id="sweeteners" [(ngModel)]="createdOrder.sweetener">
-                    <option *ngFor="let sweet of sweeteners" value="{{sweet}}">{{sweet}}</option>
+                    <option *ngFor="let sweet of sweeteners" value="{{sweet}}" style= 'text-align: center' >{{sweet}}</option>
                 </select>
 
                 <!-- Milk Form -->
-                <div class="milk" style='text-align: center; padding-top: 20px;'> Milk Options
+                <div class="milk" style='text-align: center; padding-top: 20px;'> <strong> Milk Options </strong>
                     <div class="options">
                         <label *ngFor="let milk of milkTypes" style="padding-right: 20px;">
                             <input type="radio" name="milk" [value]='milkTypes[0]' (click)="createdOrder.milkType = milk"
@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- Flavor Form  -->
-                <div class="flavor-container" style='text-align: center; padding-top: 20px;'>Flavors option
+                <div class="flavor-container" style='text-align: center; padding-top: 20px;'> <strong>Flavors option</strong>
                     <div class="option">
                         <label *ngFor="let flav of flavors" style="padding-right: 20px;">
                             <input type="radio" name="flavors" (click)="createdOrder.flavor = flav"
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <!-- Toppings -->
-                <div class="topping-container" style='text-align: center; padding-top: 20px;'> Topping option
+                <div class="topping-container" style='text-align: center; padding-top: 20px;'> <strong>Topping option</strong>
                     <div class="options">
                         <label *ngFor="let top of toppings" style="padding-right: 20px;">
                             <input type="radio" name="toppings" (click)="createdOrder.topping = top"
@@ -72,10 +72,10 @@
                     </div>
                 </div>
                 <!-- Submit Button -->
-                <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid">Submit Order</button>
+                <button class="btn btn-primary" type="submit" [disabled]="coffeeForm.invalid" >Submit Order</button>
             </form>
             <div class='btn-container'>
-                <button (click)='onClear()'>Start Over</button>
+                <button (click)='onClear()' style = "margin-top: 20px" >Start Over</button>
             </div>
         </div>
 
