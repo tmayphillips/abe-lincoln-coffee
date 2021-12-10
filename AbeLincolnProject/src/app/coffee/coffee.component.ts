@@ -18,6 +18,7 @@ export class CoffeeComponent implements OnInit {
   milkTypes:string[] = ['None', '2% Milk', 'Soy Milk', 'Almond Milk', 'Cocunut Milk', 'Oatmilk', 'Sweet Cream', 'Nonfat Milk', 'Whole Milk', 'Cream', 'Heavy Cream'] ;
   flavors:string[] = ['None', 'Brown Sugar', 'Caramel', 'Chestnut Praline', 'Hazelnut', 'Irish Cream', 'Peppermint', 'Raspberry', 'Toffee Nut', 'Vanilla']
   toppings:string[] = ['None', 'Barista Cocoa Powder', 'Caramel Brulee', 'Chestnut Praline', 'Chocolate Curls', 'Cinnamon Dolce', 'Holiday Sugar', 'Pumpkin Spice', 'Red and Green Sprinkle', 'Caramel Drizzle', 'Mocha Drizzle', 'Spiced Apple Drizzle', 'Cinnamon Powder', 'Whipped Cream']
+  highScore:number = 0;
 
   order:Order = new Order('','',0,'','','','')
   constructor() { }
@@ -68,8 +69,24 @@ export class CoffeeComponent implements OnInit {
     }
   }
 
+  getHighScore() {
+    let data:string | null
+    if (localStorage.getItem("coffeePoints") != null) {
+      data = JSON.parse(localStorage.getItem('coffeePoints') as string)
+      return data
+    } else {
+      return 'No high score yet.'
+    }
+    
+  }
+
   onSubmit(isValid:boolean|null){
     console.log('Thanks!')
+  }
+
+  onClear() {
+    this.order = new Order('','',0,'','','','')
+    // clear form
   }
 
 }
