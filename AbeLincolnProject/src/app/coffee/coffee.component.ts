@@ -11,7 +11,7 @@ export class CoffeeComponent implements OnInit {
   orderVisible:boolean = true;
   points:number = 0;
   customerOrder:Order = new Order('Xavo', 'med', 3, 'sugar', 'milk', 'None', 'caramel');
-  createdOrder:Order = new Order('Xavi', 'med', 2, 'sugar', 'soy milk', 'None', 'caramel');
+  createdOrder:Order = new Order('', '', 0, '', '', '', '');
   customer:Order[]=[];
   names:string[] = ['Chase','Gus', 'Jacob', 'Josh', 'Nathan', 'Neely', 'Pato', 'Terra', 'Tiffany', 'Xavi'];
   sizes:string[] = ['Tall', 'Grande', 'Venti']
@@ -71,12 +71,13 @@ export class CoffeeComponent implements OnInit {
       }
 
       this.points += matchCount;
+      console.log(`points: ${this.points}`)
     }
     
   }
 
   onSubmit(isValid:boolean | null){
-    console.log('Here')
+    console.log(this.createdOrder)
   }
 
   hideOrder(){
